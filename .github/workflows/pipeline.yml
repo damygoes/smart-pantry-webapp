@@ -1,0 +1,57 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - development
+      - staging
+      - production
+  pull_request:
+
+jobs:
+  quality:
+    name: Code Quality and Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run Biome Lint
+        run: pnpm format
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run Unit and Component Tests
+        run: pnpm test -- --coverage
+
+      - name: Run End-to-End Tests
+        run: pnpm test:e2e
+        env:
+          CI: true
+
+      - name: Build Storybook
+        run: pnpm run build-storybook
+
+      - name: Deploy Storybook to Vercel
+        run: pnpm exec vercel --cwd=storybook-static --prod --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy App to Vercel
+        run: pnpm exec vercel --prod --token=$VERCEL_TOKEN
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

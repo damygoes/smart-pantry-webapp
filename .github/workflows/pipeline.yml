@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
 
       - name: Install pnpm
@@ -47,7 +47,7 @@ jobs:
         run: pnpm run build-storybook
 
       - name: Deploy Storybook to Vercel
-        run: pnpm exec vercel --cwd=storybook-static --prod --token=$VERCEL_TOKEN
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 

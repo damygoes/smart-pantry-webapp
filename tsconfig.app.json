@@ -29,12 +29,14 @@
 			"@hooks/*": ["./hooks/*"],
 			"@utils/*": ["./utils/*"],
 			"@contexts/*": ["./contexts/*"],
-			"@types/*": ["./types/*"],
+			"@interfaces/*": ["./interfaces/*"],
 			"@styles/*": ["./styles/*"],
 			"@features/*": ["./features/*"],
 			"@services/*": ["./services/*"],
 			"@locales/*": ["./locales/*"],
-			"@config/*": ["./config/*"]
+			"@config/*": ["./config/*"],
+			"@providers/*": ["./providers/*"],
+			"@constants/*": ["./constants/*"]
 		}
 	},
 	"include": ["src"],

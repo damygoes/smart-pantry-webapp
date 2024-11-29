@@ -41,7 +41,7 @@ jobs:
         run: pnpm run build-storybook
 
       - name: Deploy Storybook to Vercel
-        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --yes
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 

@@ -15,7 +15,8 @@
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build -o ./storybook-static",
 		"test:e2e": "cypress open",
-		"test:e2e:headless": "cypress run"
+		"test:e2e:headless": "cypress run",
+		"chromatic": "chromatic --project-token=chpt_7dccc1d979bfc62"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.1",
@@ -59,6 +60,7 @@
 		"@vitejs/plugin-react": "^4.3.4",
 		"@vitest/coverage-v8": "^2.1.6",
 		"autoprefixer": "^10.4.20",
+		"chromatic": "^11.19.0",
 		"cypress": "^13.16.0",
 		"dotenv": "^16.4.5",
 		"eslint": "^9.15.0",

@@ -1,0 +1,13 @@
+{
+    "public": "storybook-static",
+    "rewrites": [
+        {
+            "source": "/storybook/(.*)",
+            "destination": "/storybook-static/$1"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}

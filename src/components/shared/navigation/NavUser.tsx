@@ -33,7 +33,6 @@ export function NavUser({ user }: NavUserProps) {
 	}
 
 	const userFullName = `${user.firstName} ${user.lastName}`;
-	const userInitials = `${user.firstName[0]}${user.lastName[0]}`;
 
 	return (
 		<SidebarMenu>
@@ -47,7 +46,6 @@ export function NavUser({ user }: NavUserProps) {
 							<Avatar
 								src={user.profilePicture}
 								alt={user.firstName}
-								fallbackText={userInitials}
 								size="sm"
 							/>
 							<div className="grid flex-1 text-sm leading-tight text-left">
@@ -68,7 +66,6 @@ export function NavUser({ user }: NavUserProps) {
 								<Avatar
 									src={user.profilePicture}
 									alt={user.firstName}
-									fallbackText={userInitials}
 									size="xs"
 								/>
 								<div className="grid flex-1 text-sm leading-tight text-left">

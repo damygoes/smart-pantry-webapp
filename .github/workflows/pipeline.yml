@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for accurate results
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -34,7 +36,8 @@ jobs:
           echo "VITE_PROD_BASE_URL=${{ secrets.VITE_PROD_BASE_URL }}" >> $GITHUB_ENV
           echo "VITE_DEV_BASE_URL=${{ secrets.VITE_DEV_BASE_URL }}" >> $GITHUB_ENV
           echo "CHROMATIC_PROJECT_TOKEN=${{ secrets.CHROMATIC_PROJECT_TOKEN }}" >> $GITHUB_ENV
-
+      
+          
       - name: Run Biome Lint
         run: pnpm format
 

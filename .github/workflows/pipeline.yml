@@ -37,11 +37,6 @@ jobs:
       - name: Run Unit and Component Tests
         run: pnpm test -- --coverage
 
-      - name: Run End-to-End Tests
-        run: pnpm run test:e2e:headless
-        env:
-          CI: true
-
       - name: Build Storybook
         run: pnpm run build-storybook
 
@@ -54,3 +49,12 @@ jobs:
         run: pnpm exec vercel --prod --token=$VERCEL_TOKEN
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      # Add a delay to allow the app to fully deploy
+      - name: Wait for deployment to complete
+        run: sleep 30  # Adjust the time if necessary
+
+      - name: Run End-to-End Tests
+        run: pnpm run test:e2e:headless
+        env:
+          CI: true

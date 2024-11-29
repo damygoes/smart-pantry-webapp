@@ -39,7 +39,7 @@ jobs:
         run: pnpm test -- --coverage
 
       - name: Run End-to-End Tests
-        run: pnpm test:e2e
+        run: pnpm run test:e2e:headless
         env:
           CI: true
 

@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${ENV_VARIABLES.BASE_URL}/auth/login`, { email });
+      const response = await axios.post(`${ENV_VARIABLES.BASE_URL}/api/v1/auth/login`, { email });
       alert(response.data.message);
     } catch (err) {
       setError('Error sending magic link');
@@ -21,7 +21,7 @@ const LoginForm = () => {
   const handleGoogleLogin = async (response: { tokenId: string }) => {
     const { tokenId } = response;
     try {
-      const googleResponse = await axios.post(`${ENV_VARIABLES.BASE_URL}/auth/google/callback`, { tokenId });
+      const googleResponse = await axios.post(`${ENV_VARIABLES.BASE_URL}/api/v1/auth/google/callback`, { tokenId });
       alert('Google login successful');
       console.log(googleResponse.data);
     } catch (err) {

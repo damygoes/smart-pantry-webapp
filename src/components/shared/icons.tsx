@@ -10,7 +10,8 @@ import {
     SendHorizonal,
     Settings,
     Sun,
-    SunMoon
+    SunMoon,
+    User
 } from 'lucide-react';
 
 const SendHorizonalIcon = createIcon(SendHorizonal);
@@ -24,6 +25,7 @@ const SunIcon = createIcon(Sun);
 const MoonIcon = createIcon(Moon);
 const SearchIcon = createIcon(Search);
 const PlusIcon = createIcon(Plus);
+const UserIcon = createIcon(User);
 
 export {
     LanguagesIcon,
@@ -34,6 +36,7 @@ export {
     SendIcon,
     SettingsIcon,
     SunIcon,
-    ThemeIcon
+    ThemeIcon,
+    UserIcon
 };
 

@@ -60,8 +60,8 @@ jobs:
       - name: Wait for Vercel deployment to be live
         run: |
           until curl --silent --fail https://smart-pantry-webapp.vercel.app; do
-            echo "Waiting for app to be live..."
-            sleep 10
+          echo "Waiting for app to be live..."
+          sleep 20
           done
 
       - name: Run End-to-End Tests

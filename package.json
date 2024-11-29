@@ -13,7 +13,7 @@
 		"prepare": "husky",
 		"format": "biome lint ./src",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build",
+		"build-storybook": "storybook build -o ./storybook-static",
 		"test:e2e": "cypress open",
 		"test:e2e:headless": "cypress run"
 	},
@@ -76,8 +76,6 @@
 		"vitest": "^2.1.6"
 	},
 	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
+		"extends": ["plugin:storybook/recommended"]
 	}
 }

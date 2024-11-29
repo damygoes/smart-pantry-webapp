@@ -3,13 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Button } from './Button';
 
-// Meta configuration
 const meta = {
-  title: 'Components/Button',
+  title: 'Primitives/Button',
   component: Button,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -74,7 +70,7 @@ const LoadingTemplate = (args: Record<string, unknown>) => (
   <Button {...args}>Processing...</Button>
 );
 
-export const Primary: Story = {
+export const Default: Story = {
   render: Template,
   args: {
     variant: 'primary',

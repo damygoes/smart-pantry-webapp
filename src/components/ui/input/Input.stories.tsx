@@ -2,13 +2,9 @@ import { SendHorizonalIcon } from '@components/shared/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './Input';
 
-// Meta configuration
 const meta = {
-  title: 'Components/Input',
+  title: 'Primitives/Input',
   component: Input,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -96,7 +92,7 @@ const DisabledTemplate = (args: Record<string, unknown>) => (
   <Input {...args} placeholder="Email Address" />
 );
 
-export const Primary: Story = {
+export const Default: Story = {
   render: Template,
 };
 

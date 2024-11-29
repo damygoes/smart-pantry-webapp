@@ -12,6 +12,7 @@
 		"coverage": "vitest run --coverage",
 		"prepare": "husky",
 		"format": "biome lint ./src",
+		"format:fix": "biome lint --write ./src",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build -o ./storybook-static",
 		"test:e2e": "cypress open",

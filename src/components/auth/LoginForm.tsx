@@ -1,7 +1,7 @@
 import { ENV_VARIABLES } from '@config/env';
 import axios from 'axios';
 import { useState } from 'react';
-import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import { GoogleLogin, type GoogleLoginResponse, type GoogleLoginResponseOffline } from 'react-google-login';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

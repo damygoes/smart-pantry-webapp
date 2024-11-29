@@ -15,8 +15,7 @@
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build -o ./storybook-static",
 		"test:e2e": "cypress open",
-		"test:e2e:headless": "cypress run",
-		"chromatic": "chromatic --project-token=chpt_7dccc1d979bfc62"
+		"test:e2e:headless": "cypress run"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.1",

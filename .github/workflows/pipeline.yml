@@ -48,7 +48,7 @@ jobs:
         run: pnpm test -- --coverage
 
       - name: Build Storybook and Deploy to Chromatic
-        run: pnpm run chromatic
+        run: pnpm exec chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
       - name: Deploy App to Vercel
         run: pnpm exec vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes

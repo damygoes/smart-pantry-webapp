@@ -1,6 +1,7 @@
 import defaultImage from '@assets/user.svg';
 import { cn } from '@utils/classNameMerge';
 import { type VariantProps, cva } from 'class-variance-authority';
+import { useState } from 'react';
 
 const FALLBACK_AVATAR_ALT_TEXT = 'Avatar';
 const FALLBACK_AVATAR_SRC = defaultImage;
@@ -10,6 +11,7 @@ const avatarVariants = cva(
 	{
 		variants: {
 			size: {
+				xs: 'size-[1.6rem]',
 				sm: 'size-[2.8rem]',
 				md: 'size-[3.8rem]',
 				lg: 'size-[5.2rem]',
@@ -30,7 +32,7 @@ interface AvatarProps
 	/* the alt text for the Avatar image */
 	alt: string;
 	// /* the size of the Avatar */
-	size?: 'sm' | 'md' | 'lg' | 'xl';
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 	/* optionaö classname for the Avatar */
 	className?: string;
 }
@@ -42,6 +44,7 @@ const Avatar = ({
 	className,
 	...props
 }: AvatarProps) => {
+	const [isImageError, setIsImageError] = useState(false);
 	if (!alt) {
 		throw new Error('Avatar component requires an alt prop');
 	}
@@ -51,7 +54,7 @@ const Avatar = ({
 			className={cn(
 				avatarVariants({ size }),
 				{
-					'border border-solid border-border': !src,
+					'border border-solid border-border': isImageError || !src,
 				},
 				className,
 			)}
@@ -64,6 +67,7 @@ const Avatar = ({
 					const target = e.target as HTMLImageElement; // assert the target as an HTMLImageElement
 					target.onerror = null; // prevents looping
 					target.src = FALLBACK_AVATAR_SRC; // set the fallback image
+					setIsImageError(true);
 				}}
 				className={cn('aspect-square h-full w-full object-cover')}
 			/>

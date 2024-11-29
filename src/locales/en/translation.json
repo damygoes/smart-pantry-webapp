@@ -1,5 +1,27 @@
 {
 	"page": {
 		"title": "Hello World"
+	},
+	"auth": {
+		"logout": "Logout"
+	},
+	"components": {
+		"datePicker": {
+			"placeholder": "Select date"
+		},
+		"searchBar": {
+			"placeholder": "Search..."
+		},
+		"themeToggle": {
+			"light": "Light",
+			"dark": "Dark"
+		}
+	},
+	"navigation": {
+		"dashboard": "Dashboard"
+	},
+	"sidebarUserDropdown": {
+		"profile": "Profile",
+		"upgradeTo": "Upgrade to"
 	}
 }

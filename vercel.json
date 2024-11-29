@@ -1,5 +1,4 @@
 {
-    "public": "storybook-static",
     "rewrites": [
         {
             "source": "/storybook/(.*)",

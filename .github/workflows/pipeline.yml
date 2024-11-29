@@ -16,19 +16,28 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for accurate results
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 20
 
-      - name: Install pnpm
-        run: corepack enable && corepack prepare pnpm@latest --activate
+      - name: Install pnpm globally
+        run: npm install -g pnpm
 
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Set environment variables
+        run: |
+          echo "VITE_ENV=${{ secrets.VITE_ENV }}" >> $GITHUB_ENV
+          echo "VITE_PROD_BASE_URL=${{ secrets.VITE_PROD_BASE_URL }}" >> $GITHUB_ENV
+          echo "VITE_DEV_BASE_URL=${{ secrets.VITE_DEV_BASE_URL }}" >> $GITHUB_ENV
+          echo "CHROMATIC_PROJECT_TOKEN=${{ secrets.CHROMATIC_PROJECT_TOKEN }}" >> $GITHUB_ENV
+      
+          
       - name: Run Biome Lint
         run: pnpm format
 
@@ -38,20 +47,23 @@ jobs:
       - name: Run Unit and Component Tests
         run: pnpm test -- --coverage
 
+      - name: Build Storybook and Deploy to Chromatic
+        run: pnpm exec chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      - name: Deploy App to Vercel
+        run: pnpm exec vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      # Wait for Vercel deployment to be live before running tests
+      - name: Wait for Vercel deployment to be live
+        run: |
+          until curl --silent --fail https://smart-pantry-webapp.vercel.app; do
+            echo "Waiting for app to be live..."
+            sleep 20
+          done
+
       - name: Run End-to-End Tests
         run: pnpm run test:e2e:headless
         env:
           CI: true
-
-      - name: Build Storybook
-        run: pnpm run build-storybook
-
-      - name: Deploy Storybook to Vercel
-        run: pnpm exec vercel --cwd=storybook-static --prod --token=$VERCEL_TOKEN
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy App to Vercel
-        run: pnpm exec vercel --prod --token=$VERCEL_TOKEN
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

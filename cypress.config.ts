@@ -5,13 +5,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
-  e2e: {
-    baseUrl: process.env.VITE_ENV === 'production'
-      ? process.env.VITE_PROD_BASE_URL
-      : process.env.VITE_DEV_BASE_URL,
-    setupNodeEvents(on, config) {
-      // You can set up other events here if needed
-      return config;
-    },
-  },
+	e2e: {
+		video: true,
+		screenshotsFolder: 'cypress/screenshots',
+		videosFolder: 'cypress/videos',
+		baseUrl: 'https://smart-pantry-webapp.vercel.app',
+		retries: {
+			runMode: 2, // Retry up to 2 times when running in CI
+			openMode: 0, // No retries when running interactively
+		},
+		setupNodeEvents(on, config) {
+			console.log('Cypress baseUrl:', config.baseUrl);
+			return config;
+		},
+	},
 });

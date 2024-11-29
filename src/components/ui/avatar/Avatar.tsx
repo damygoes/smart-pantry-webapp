@@ -33,8 +33,6 @@ interface AvatarProps
 	alt: string;
 	// /* the size of the Avatar */
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-	/* optional text to display if the image fails to load */
-	fallbackText?: string;
 	/* optionaö classname for the Avatar */
 	className?: string;
 }
@@ -43,7 +41,6 @@ const Avatar = ({
 	src,
 	alt,
 	size = 'md',
-	fallbackText,
 	className,
 	...props
 }: AvatarProps) => {
@@ -57,14 +54,14 @@ const Avatar = ({
 			className={cn(
 				avatarVariants({ size }),
 				{
-					'border border-solid border-border': isImageError,
+					'border border-solid border-border': isImageError || !src,
 				},
 				className,
 			)}
 			{...props}
 		>
 			<img
-				src={src || fallbackText}
+				src={src || FALLBACK_AVATAR_SRC}
 				alt={alt || FALLBACK_AVATAR_ALT_TEXT}
 				onError={(e) => {
 					const target = e.target as HTMLImageElement; // assert the target as an HTMLImageElement

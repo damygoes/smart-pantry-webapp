@@ -34,7 +34,7 @@ const Homepage = () => {
 	return (
 		<div className="flex flex-col items-center justify-between w-full h-full bg-white lg:flex-row">
 			{/* Left Section */}
-			<div className="flex flex-col items-center justify-between w-full h-full p-6 lg:w-1/2 bg-gradient-to-b from-primary from-10% via-foreground via-50%">
+			<div className="flex flex-col items-center justify-between w-full h-full p-6 lg:w-1/2 bg-gradient-to-b from-primary from-10% via-50%">
 				<div className="flex flex-col items-center justify-center flex-1 max-w-sm text-center lg:items-start lg:max-w-md lg:text-left">
 					<ChefIcon className="mb-4 text-white stroke-1" size={64} />
 					<Typography appearance="primary" size="base">
@@ -53,7 +53,7 @@ const Homepage = () => {
 			</div>
 
 			{/* Right Section */}
-			<div className="flex items-center justify-center w-full h-full px-4 lg:w-1/2 bg-gradient-to-t from-primary from-10% via-foreground via-80%">
+			<div className="flex items-center justify-center w-full h-full px-4 lg:w-1/2 bg-gradient-to-t from-primary from-10% via-80%">
 				{renderStepComponent()}
 			</div>
 		</div>

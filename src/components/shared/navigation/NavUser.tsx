@@ -15,24 +15,24 @@ import {
 	useSidebar,
 } from '@components/ui/sidebar/Sidebar';
 import LogoutButton from '@features/auth/components/LogoutButton';
-import type { User } from '@features/user/types/user';
+import { useUserStore } from '@features/user/store';
 import { ChevronsUpDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { AccountIcon, UpgradeIcon } from '../icons';
 
-interface NavUserProps {
-	user: User | null;
-}
-
-export function NavUser({ user }: NavUserProps) {
+export function NavUser() {
 	const { isMobile } = useSidebar();
+	const { user } = useUserStore();
 	const { t } = useTranslation();
 
 	if (!user) {
 		return null;
 	}
 
-	const userFullName = `${user.firstName} ${user.lastName}`;
+	const userFullName =
+		!user.firstName && !user.lastName
+			? 'New User'
+			: `${user.firstName || ''} ${user.lastName || ''}`.trim();
 
 	return (
 		<SidebarMenu>
@@ -44,8 +44,8 @@ export function NavUser({ user }: NavUserProps) {
 							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 						>
 							<Avatar
-								src={user.profilePicture}
-								alt={user.firstName}
+								src={user.profilePicture || ''}
+								alt={user.firstName || 'unknown user'}
 								size="sm"
 							/>
 							<div className="grid flex-1 text-sm leading-tight text-left">
@@ -64,8 +64,8 @@ export function NavUser({ user }: NavUserProps) {
 						<DropdownMenuLabel className="p-0 font-normal">
 							<div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
 								<Avatar
-									src={user.profilePicture}
-									alt={user.firstName}
+									src={user.profilePicture || ''}
+									alt={user.firstName || 'unknown user'}
 									size="xs"
 								/>
 								<div className="grid flex-1 text-sm leading-tight text-left">

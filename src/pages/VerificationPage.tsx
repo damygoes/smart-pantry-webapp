@@ -1,4 +1,6 @@
 import { apiMagicLinkVerificationUrl } from '@features/auth/constants';
+import { useUserStore } from '@features/user/store';
+import type { User } from '@features/user/types/user';
 import axiosClient from '@services/axios/axiosClient';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +11,7 @@ const VerificationPage = () => {
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+	const { setUser } = useUserStore();
 
 	useEffect(() => {
 		const verifyMagicLink = async () => {
@@ -28,6 +31,8 @@ const VerificationPage = () => {
 
 				if (response.status === 200) {
 					setMessage(t('verificationStep.success'));
+					const user: User = response.data.user;
+					setUser(user);
 					navigate('/dashboard');
 				} else {
 					setMessage(t('verificationStep.invalidLink'));
@@ -41,7 +46,7 @@ const VerificationPage = () => {
 		};
 
 		verifyMagicLink();
-	}, [location.search, navigate, t]);
+	}, [location.search, navigate, setUser, t]);
 	return <div>{message || t('common.verifying')}</div>;
 };
 

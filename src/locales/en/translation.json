@@ -7,7 +7,8 @@
 		}
 	},
 	"auth": {
-		"logout": "Logout"
+		"logout": "Logout",
+		"loggingOut": "Logging out..."
 	},
 	"components": {
 		"datePicker": {

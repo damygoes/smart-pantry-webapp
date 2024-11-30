@@ -68,6 +68,13 @@ jobs:
           done
 
       - name: Run End-to-End Tests
-        run: pnpm run test:e2e:headless
+        run: |
+          if ls tests/e2e/*.test.js 1> /dev/null 2>&1; then
+            echo "E2E tests found. Running tests..."
+            pnpm run test:e2e:headless
+          else
+            echo "No E2E tests found. Skipping E2E tests."
+          fi
         env:
           CI: true
+        

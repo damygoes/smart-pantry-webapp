@@ -43,10 +43,10 @@ jobs:
       
           
       - name: Run Biome Lint
-        run: pnpm format
+        run: pnpm format --fix
 
       - name: Run ESLint
-        run: pnpm lint
+        run: pnpm lint --fix
 
       - name: Run Unit and Component Tests
         run: pnpm test -- --coverage

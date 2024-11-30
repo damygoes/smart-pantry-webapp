@@ -7,7 +7,24 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"ignore": [
+			"node_modules/**",
+			"dist/**",
+			"**/*.d.ts",
+			"**/*.yml",
+			"**/*.yaml",
+			".storybook/**",
+			"cypress/**",
+			"public/**",
+			"config/**",
+			"styles/**",
+			"**/*.spec.ts",
+			"**/*.test.ts",
+			"**/*.md",
+			"**/*.config.ts",
+			"**/*.config.js",
+			"**/*.css"
+		]
 	},
 	"formatter": {
 		"enabled": true,

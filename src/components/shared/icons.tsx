@@ -3,6 +3,7 @@ import { createIcon } from '@utils/createIcon';
 import {
 	BadgeCheck,
 	Bell,
+	ChefHat,
 	ChevronLeft,
 	ChevronRight,
 	Command,
@@ -46,11 +47,13 @@ const PanelLeftIcon = createIcon(PanelLeft);
 const ChevronRightIcon = createIcon(ChevronRight);
 const ChevronLeftIcon = createIcon(ChevronLeft);
 const CalendarIcon = createIcon(Calendar);
+const ChefIcon = createIcon(ChefHat);
 
 export {
 	AccountIcon,
 	BillingIcon,
 	CalendarIcon,
+	ChefIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CommandIcon,

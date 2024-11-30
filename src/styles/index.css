@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -60,6 +61,10 @@ body,
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 240 5.9% 90%;
     --sidebar-ring: 142.1 76.2% 36.3%;
+    --radius: 0.5rem;
+    --font-size: 0.9rem;
+    --white: 0 0% 96%;
+    --black: 0 0% 0%;
   }
 
   .dark {
@@ -95,6 +100,10 @@ body,
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 142.4 71.8% 29.2%;
+    --radius: 0.5rem;
+    --font-size: 0.9rem;
+    --white: 0 0% 96%;
+    --black: 0 0% 0%;
   }
 }
 

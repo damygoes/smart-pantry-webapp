@@ -42,10 +42,10 @@ jobs:
           echo "CHROMATIC_PROJECT_TOKEN=${{ secrets.CHROMATIC_PROJECT_TOKEN }}" >> $GITHUB_ENV
       
           
-      - name: Run Biome Lint
+      - name: Run Biome Lint and Fix
         run: pnpm format --fix
 
-      - name: Run ESLint
+      - name: Run ESLint and Fix
         run: pnpm lint --fix
 
       - name: Run Unit and Component Tests

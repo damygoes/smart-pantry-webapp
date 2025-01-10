@@ -1,5 +1,6 @@
 import { cn } from '@utils/classNameMerge';
 import { type VariantProps, cva } from 'class-variance-authority';
+import type { JSX } from 'react';
 
 const headingVariants = cva('text-balance', {
 	variants: {

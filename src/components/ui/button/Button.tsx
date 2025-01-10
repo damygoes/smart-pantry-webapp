@@ -68,6 +68,8 @@ export interface ButtonProps
 	iconAfter?: React.ReactNode;
 	/** If true, the button will be disabled and show a loading spinner */
 	isLoading?: boolean;
+	/** Optional loading text to display when isLoading is true */
+	loadingText?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -82,6 +84,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			iconBefore,
 			iconAfter,
 			isLoading = false,
+			loadingText = 'Loading...',
 			...props
 		},
 		ref,
@@ -108,8 +111,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				{iconBeforeToRender && (
 					<span className="mr-2">{iconBeforeToRender}</span>
 				)}
-				{/* Render button children (text or other content) */}
-				{children}
+				{/* Render loading text or children */}
+				{isLoading ? (
+					<span className="flex items-center space-x-2">
+						<span>{loadingText}</span>
+					</span>
+				) : (
+					children
+				)}
 				{/* Render iconAfter if it's provided and not loading */}
 				{iconAfter && !isLoading && <span className="ml-2">{iconAfter}</span>}
 			</Comp>

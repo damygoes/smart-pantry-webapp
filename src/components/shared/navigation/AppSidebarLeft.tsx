@@ -8,7 +8,6 @@ import {
 	SidebarMenuItem,
 } from '@components/ui/sidebar/Sidebar';
 import { MainNavigationLinks } from '@constants/MainNavigationLinks';
-import { useUserStore } from '@features/user/store';
 import { CommandIcon } from '../icons';
 import MainNavigation from './MainNavigation';
 import { NavUser } from './NavUser';
@@ -17,7 +16,6 @@ export const AppSidebarLeft = ({
 	...props
 }: React.ComponentProps<typeof Sidebar>) => {
 	const mainNavLinks = MainNavigationLinks();
-	const user = useUserStore((state) => state.user);
 
 	return (
 		<Sidebar variant="inset" {...props}>
@@ -42,7 +40,7 @@ export const AppSidebarLeft = ({
 				<MainNavigation items={mainNavLinks} />
 			</SidebarContent>
 			<SidebarFooter>
-				<NavUser user={user ?? null} />
+				<NavUser />
 			</SidebarFooter>
 		</Sidebar>
 	);

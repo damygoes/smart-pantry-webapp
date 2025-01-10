@@ -66,9 +66,12 @@ module.exports = {
 				border: 'hsl(var(--sidebar-border))',
 				ring: 'hsl(var(--sidebar-ring))',
 			},
+			black: 'hsl(var(--black))',
+			white: 'hsl(var(--white))',
 		},
 		fontFamily: {
-			sans: ['Lato', 'sans-serif'],
+			sans: ['"Open Sans"', 'sans-serif'],
+			roboto: ['"Roboto Mono"', 'monospace'],
 		},
 		fontSize: {
 			'3xs': 'calc(var(--font-size) - 0.375rem)',
@@ -79,12 +82,27 @@ module.exports = {
 			lg: 'calc(var(--font-size) + 0.25rem)',
 			xl: 'calc(var(--font-size) + 0.375rem)',
 			'2xl': 'calc(var(--font-size) + 0.5rem)',
-			'3xl': 'calc(var(--font-size) + 0.625rem)',
+			'3xl': 'calc(var(--font-size) + 0.825rem)',
+			'4xl': 'calc(var(--font-size) + 1.25rem)',
+			'5xl': 'calc(var(--font-size) + 1.75rem)',
+			'6xl': 'calc(var(--font-size) + 2.25rem)',
+			'7xl': 'calc(var(--font-size) + 2.75rem)',
+			'8xl': 'calc(var(--font-size) + 3.25rem)',
+		},
+		fontWeight: {
+			light: '300',
+			normal: '400',
+			medium: '500',
+			semibold: '600',
+			bold: '700',
+			extrabold: '800',
 		},
 		borderRadius: {
 			lg: 'var(--radius)',
 			md: 'calc(var(--radius) - 2px)',
 			sm: 'calc(var(--radius) - 4px)',
+			xl: 'calc(var(--radius) + 2px)',
+			full: '50%',
 		},
 		extend: {
 			keyframes: {

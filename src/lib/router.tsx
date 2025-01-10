@@ -1,7 +1,7 @@
 import RootLayout from '@components/shared/layout/RootLayout';
 import AuthWrapper from '@features/auth/components/AuthWrapper';
 import Dashboard from '@pages/Dashboard';
-import LoginPage from '@pages/LoginPage';
+import Homepage from '@pages/Homepage';
 import VerificationPage from '@pages/VerificationPage';
 import {
 	Route,
@@ -12,7 +12,7 @@ import {
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route>
-			<Route path="/" element={<LoginPage />} />
+			<Route path="/" element={<Homepage />} />
 			<Route path="/auth/verify-magic-link" element={<VerificationPage />} />
 			{/* Protected Routes */}
 			<Route element={<AuthWrapper />}>

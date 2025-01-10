@@ -1,9 +1,14 @@
 {
 	"page": {
-		"title": "Hello World"
+		"title": "Hello World",
+		"homepage": {
+			"title": "Take control of your kitchen with",
+			"description": "Stay organized, reduce waste, and plan your meals effortlessly. Track your food items, get reminders before they expire, and enjoy stress-free pantry management—all in one app."
+		}
 	},
 	"auth": {
-		"logout": "Logout"
+		"logout": "Logout",
+		"loggingOut": "Logging out..."
 	},
 	"components": {
 		"datePicker": {
@@ -23,5 +28,25 @@
 	"sidebarUserDropdown": {
 		"profile": "Profile",
 		"upgradeTo": "Upgrade to"
+	},
+	"loginForm": {
+		"title": "Get started",
+		"description": "Enter your email address, no password required.",
+		"email": "Email",
+		"continueWithEmail": "Continue",
+		"continueWithGoogle": "Continue with Google"
+	},
+	"verificationStep": {
+		"title": "Verify your email",
+		"description": "We've sent a link to {{email}}. Click the link to verify your email address.",
+		"cta": "You can safely close this window. The link will automatically redirect you to the app once authenticated.",
+		"invalidLink": "The link is invalid or has expired. Please request a new link.",
+		"failedVerification": "Failed to verify your email. Please request a new link.",
+		"success": "Your email has been verified successfully. Redirecting..."
+	},
+	"common": {
+		"copyright": "© 2024 SmartPantry. All rights reserved.",
+		"processing": "Processing...",
+		"verifying": "Verifying..."
 	}
 }

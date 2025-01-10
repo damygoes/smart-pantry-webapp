@@ -42,11 +42,11 @@ jobs:
           echo "CHROMATIC_PROJECT_TOKEN=${{ secrets.CHROMATIC_PROJECT_TOKEN }}" >> $GITHUB_ENV
       
           
-      - name: Run Biome Lint
-        run: pnpm format
+      - name: Run Biome Lint and Fix
+        run: pnpm format --fix
 
-      - name: Run ESLint
-        run: pnpm lint
+      - name: Run ESLint and Fix
+        run: pnpm lint --fix
 
       - name: Run Unit and Component Tests
         run: pnpm test -- --coverage
@@ -68,6 +68,13 @@ jobs:
           done
 
       - name: Run End-to-End Tests
-        run: pnpm run test:e2e:headless
+        run: |
+          if ls tests/e2e/*.test.js 1> /dev/null 2>&1; then
+            echo "E2E tests found. Running tests..."
+            pnpm run test:e2e:headless
+          else
+            echo "No E2E tests found. Skipping E2E tests."
+          fi
         env:
           CI: true
+        

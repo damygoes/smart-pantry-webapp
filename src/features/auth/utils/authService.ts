@@ -1,6 +1,7 @@
-import { ENV_VARIABLES } from '@config/env';
 import { useUserStore } from '@features/user/store';
 import axiosClient from '@services/axios/axiosClient';
+import { apiRefreshTokenUrl } from '../constants';
+import { logoutUser } from '../requests';
 
 export const AuthService = {
 	getAccessToken() {
@@ -13,9 +14,7 @@ export const AuthService = {
 
 	async refreshAccessToken() {
 		try {
-			await axiosClient.post(
-				`${ENV_VARIABLES.BASE_URL}/api/v1/auth/refresh-token`,
-			);
+			await axiosClient.post(apiRefreshTokenUrl);
 			// No need to return anything since tokens are set in cookies
 		} catch (error) {
 			console.error('Failed to refresh access token:', error);
@@ -34,13 +33,22 @@ export const AuthService = {
 		document.cookie = `accessToken=${token}; path=/; HttpOnly; SameSite=Strict`;
 	},
 
-	logout() {
-		document.cookie = 'accessToken=; Max-Age=0; path=/'; // Clear accessToken
-		document.cookie = 'refreshToken=; Max-Age=0; path=/'; // Clear refreshToken
+	async logout() {
+		try {
+			await logoutUser();
 
-		const { setUser } = useUserStore.getState();
-		setUser(null);
+			// Clear cookies
+			document.cookie = 'accessToken=; Max-Age=0; path=/';
+			document.cookie = 'refreshToken=; Max-Age=0; path=/';
 
-		window.location.href = '/';
+			// Update user state
+			const { setUser } = useUserStore.getState();
+			setUser(null);
+
+			// Redirect to the home page
+			window.location.href = '/';
+		} catch (error) {
+			console.error('Failed to log out:', error);
+		}
 	},
 };

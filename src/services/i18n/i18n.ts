@@ -7,26 +7,26 @@ import { initReactI18next } from 'react-i18next';
 export const defaultNS = 'translation' as const;
 
 export const resources = {
-  en: {
-    translation: translationEN,
-  },
-  de: {
-    translation: translationDE,
-  },
+	en: {
+		translation: translationEN,
+	},
+	de: {
+		translation: translationDE,
+	},
 } as const;
 
 i18n
-  .use(Backend)
-  .use(initReactI18next)
-  .init({
-    lng: localStorage.getItem('quickbill_lang') ?? 'en',
-    fallbackLng: 'de',
-    defaultNS,
-    debug: false, // set to false in production
-    resources,
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+	.use(Backend)
+	.use(initReactI18next)
+	.init({
+		lng: localStorage.getItem('quickbill_lang') ?? 'en',
+		fallbackLng: 'de',
+		defaultNS,
+		debug: false, // set to false in production
+		resources,
+		interpolation: {
+			escapeValue: false,
+		},
+	});
 
 export default i18n;

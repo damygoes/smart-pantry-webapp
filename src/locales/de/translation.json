@@ -1,9 +1,14 @@
 {
 	"page": {
-		"title": "Hallo Welt"
+		"title": "Hallo Welt",
+		"homepage": {
+			"title": "Übernehmen Sie die Kontrolle über Ihre Küche mit",
+			"description": "Bleiben Sie organisiert, reduzieren Sie Abfall und planen Sie Ihre Mahlzeiten mühelos. Verfolgen Sie Ihre Lebensmittel, erhalten Sie Erinnerungen, bevor sie ablaufen, und genießen Sie stressfreies Vorratsmanagement - alles in einer App."
+		}
 	},
 	"auth": {
-		"logout": "Ausloggen"
+		"logout": "Ausloggen",
+		"loggingOut": "Abmelden lauft..."
 	},
 	"components": {
 		"datePicker": {
@@ -23,5 +28,24 @@
 	"sidebarUserDropdown": {
 		"profile": "Profil",
 		"upgradeTo": "Upgrade zu"
+	},
+	"loginForm": {
+		"title": "Los geht's",
+		"description": "Geben Sie Ihre E-Mail-Adresse ein, kein Passwort erforderlich.",
+		"email": "E-Mail",
+		"continueWithEmail": "Weiter",
+		"continueWithGoogle": "Mit Google fortfahren"
+	},
+	"verificationStep": {
+		"title": "Bestätigen Sie Ihre E-Mail-Adresse",
+		"description": "Wir haben einen Link an {{email}} gesendet. Klicken Sie auf den Link, um Ihre E-Mail-Adresse zu bestätigen.",
+		"cta": "Sie können dieses Fenster sicher schließen. Der Link leitet Sie automatisch zur App weiter, sobald Sie authentifiziert sind.",
+		"invalidLink": "Der Link ist ungültig oder abgelaufen. Bitte fordern Sie einen neuen Link an.",
+		"failedVerification": "Die E-Mail-Adresse konnte nicht verifiziert werden. Bitte fordern Sie einen neuen Link an.",
+		"success": "Ihre E-Mail-Adresse wurde erfolgreich verifiziert. Weiterleitung..."
+	},
+	"common": {
+		"copyright": "© 2024 SmartPantry. Alle Rechte vorbehalten.",
+		"processing": "Verarbeitung..."
 	}
 }
